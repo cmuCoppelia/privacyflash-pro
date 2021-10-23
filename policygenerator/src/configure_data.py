@@ -13,7 +13,7 @@ configure_data.py contains functions that prepares analyzed data results from
 """
 
 
-import json, os
+import json, os, csv
 
 def createPracticesJson(result):
     """
@@ -26,12 +26,16 @@ def createPracticesJson(result):
     :return json: json-ready object
     """
     json = {}
+    f = open('../csvfiles/test.csv', 'w')
+    writer = csv.writer(f)
+    writer.writerow(["practice_name","used"])
     for practice in result:
         for value in result[practice]:
             if value == 'used':
                 if result[practice][value] == 1:
                     json[str(practice)] = {}
                     json[str(practice)][value] = True
+                    writer.writerow([practice,'1'])
                 else:
                     break
                     """json[str(practice)][value] = False"""
@@ -47,6 +51,7 @@ def createPracticesJson(result):
                     used = True
                 json[str(practice)][value] =\
                     manageEvidence(result[practice][value], str(practice), used)"""
+    f.close()
     return json
 
 def createThirdPartyJson(result):
@@ -160,7 +165,7 @@ def configure_data(practices, thirdParties):
     practices_json = createPracticesJson(practices)
 
     """ generate_nutrition_label(path , practices_json)  """
-    
+
     """ camera,use
         location,use
     """
