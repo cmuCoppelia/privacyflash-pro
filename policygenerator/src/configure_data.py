@@ -27,14 +27,17 @@ def createPracticesJson(result):
     """
     json = {}
     for practice in result:
-        json[str(practice)] = {}
         for value in result[practice]:
             if value == 'used':
                 if result[practice][value] == 1:
+                    json[str(practice)] = {}
                     json[str(practice)][value] = True
                 else:
-                    json[str(practice)][value] = False
-            elif value == "classifications":
+                    break
+                    """json[str(practice)][value] = False"""
+            else:
+                break
+            """elif value == "classifications":
                 json[str(practice)][value] = []
                 for item in result[practice][value]:
                     (json[str(practice)][value]).append(str(item))
@@ -43,7 +46,7 @@ def createPracticesJson(result):
                 if (result[practice]['used'] == 1):
                     used = True
                 json[str(practice)][value] =\
-                    manageEvidence(result[practice][value], str(practice), used)
+                    manageEvidence(result[practice][value], str(practice), used)"""
     return json
 
 def createThirdPartyJson(result):
@@ -155,6 +158,12 @@ def configure_data(practices, thirdParties):
     (thirdParties_json, sdks, thirdPartyPractices) =\
         createThirdPartyJson(thirdParties)
     practices_json = createPracticesJson(practices)
+
+    """ generate_nutrition_label(path , practices_json)  """
+    
+    """ camera,use
+        location,use
+    """
 
     return (
         json.dumps(practices_json, sort_keys=True),
