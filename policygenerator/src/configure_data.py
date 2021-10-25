@@ -71,7 +71,7 @@ def createThirdPartyJson(result):
         "GOOGLE": {}}
     f = open('../csvfiles/3rd_party_test.csv', 'w')
     writer = csv.writer(f)
-    writer.writerow(["practice_name", "sdk"])
+    writer.writerow(["practice_name", "sdk","purposes"])
 
     thirdPartyPractices = {}
     sdks = {}
@@ -88,16 +88,16 @@ def createThirdPartyJson(result):
             }
         for value in result[sdk][:-1]:
             if str(value) not in thirdPartyPractices:
-                thirdPartyPractices[str(value)] = {str(sdk)}
+                thirdPartyPractices[str(value)] = [index]
             else:
-                thirdPartyPractices[str(value)].add(str(sdk))
+                thirdPartyPractices[str(value)].append(index)
             json[str(value)][index] =\
                 {"PURPOSE": purpose, "USED": True}
         index += 1
 
         for key , value in thirdPartyPractices.items():
-            for sdkName in value:
-                writer.writerow([key,sdkName])
+            for sdkIndex in value:
+                writer.writerow([key,sdks[sdkIndex]["NAME"],sdks[sdkIndex]["PURPOSE"]])
 
     f.close()
     return (json, sdks, thirdPartyPractices)
