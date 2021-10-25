@@ -111,6 +111,16 @@ Copyright (c) 2019 David Baraka, Rafael Goldstein, Sarah Jin, Sebastian Zimmeck 
             style="width:100%;"
             id="path"/>
         </div>
+          <div
+          class="row mt-3">
+          <input
+            class="font-weight-bold"
+            type="text"
+            placeholder="Click here to select a directory to store nutrition label files."
+            readonly
+            style="width:100%;"
+            id="csvpath"/>
+        </div>
         <div
           class="row d-flex justify-content-start align-items-center pt-2"
           style="cursor: default;">
@@ -1724,6 +1734,7 @@ Copyright (c) 2019 David Baraka, Rafael Goldstein, Sarah Jin, Sebastian Zimmeck 
         updateDisclaimer = pywebview.api.updateDisclaimer
         showBootLogo = pywebview.api.showBootLogo
         validate = pywebview.api.validate
+        validateCSVFolder = pywebview.api.validateCSVFolder
         main = pywebview.api.main
         await import('./js/main.js');
     })

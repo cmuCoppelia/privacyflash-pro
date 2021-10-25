@@ -15,7 +15,7 @@ configure_data.py contains functions that prepares analyzed data results from
 
 import json, os, csv
 
-def createPracticesJson(result):
+def createPracticesJson(result,csvD):
     """
     Given a python dictionary containing the practices' results from the
         generator with custom python objects, extract the values of the python
@@ -26,10 +26,11 @@ def createPracticesJson(result):
     :return json: json-ready object
     """
     json = {}
-    f = open('../csvfiles/test.csv', 'w')
+    f = open(csvD+'test.csv', 'w')
     writer = csv.writer(f)
     writer.writerow(["practice_name","used"])
     for practice in result:
+        json[str(practice)] = {}
         for value in result[practice]:
             if value == 'used':
                 if result[practice][value] == 1:
@@ -37,11 +38,8 @@ def createPracticesJson(result):
                     json[str(practice)][value] = True
                     writer.writerow([practice,'1'])
                 else:
-                    break
-                    """json[str(practice)][value] = False"""
-            else:
-                break
-            """elif value == "classifications":
+                    json[str(practice)][value] = False
+            elif value == "classifications":
                 json[str(practice)][value] = []
                 for item in result[practice][value]:
                     (json[str(practice)][value]).append(str(item))
@@ -50,11 +48,11 @@ def createPracticesJson(result):
                 if (result[practice]['used'] == 1):
                     used = True
                 json[str(practice)][value] =\
-                    manageEvidence(result[practice][value], str(practice), used)"""
+                    manageEvidence(result[practice][value], str(practice), used)
     f.close()
     return json
 
-def createThirdPartyJson(result):
+def createThirdPartyJson(result,csvD):
     """
     Given a python dictionary containing the third party results from the
         generator with custom python objects, extract the values of the python
@@ -69,7 +67,7 @@ def createThirdPartyJson(result):
         "REMINDERS": {}, "MUSIC": {}, "HOMEKIT": {}, "SPEECH": {},
         "MOTION": {}, "FACEBOOK": {}, "PURCHASES": {}, "TRACKING": {},
         "GOOGLE": {}}
-    f = open('../csvfiles/3rd_party_test.csv', 'w')
+    f = open(csvD+'3rd_party_test.csv', 'w')
     writer = csv.writer(f)
     writer.writerow(["practice_name", "sdk","purposes"])
 
@@ -155,7 +153,7 @@ def manageEvidence(evidenceLst, practice, usedFP):
 
     return evidenceDict
 
-def configure_data(practices, thirdParties):
+def configure_data(practices, thirdParties,csvD):
     """
     Given a python dictionary containing the third party results from the
         generator with custom python objects, extract the values of the python
@@ -171,8 +169,8 @@ def configure_data(practices, thirdParties):
     """
     # create json-ready objects
     (thirdParties_json, sdks, thirdPartyPractices) =\
-        createThirdPartyJson(thirdParties)
-    practices_json = createPracticesJson(practices)
+        createThirdPartyJson(thirdParties,csvD)
+    practices_json = createPracticesJson(practices,csvD)
 
     """ generate_nutrition_label(path , practices_json)  """
 

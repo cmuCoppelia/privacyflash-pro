@@ -58,12 +58,24 @@ function inputPath() {
           }
          })
 
+        $("#csvpath").click(async function () {
+          const dir = await showFolderDialog()
+          if (dir != null && dir.length !== 0) {
+            $("#csvpath").val(dir);
+            $("#csvpath").removeClass("invalid text-danger").addClass("focus");
+            $(".validation").addClass("d-none");
+          }
+         })
+
         $("#generate").click(async function () {
           let val = $("#path").val();
+          let csvVal = $("#csvpath").val();
           const result = await validate(val)
+          const csvResult = await validateCSVFolder(csvVal)
+          window.alert("normal"+result+"csv"+csvResult)
 
-            if (result) {
-              spinner(val + "/");
+            if (result && csvResult) {
+              spinner(val + "/", csvVal+"/");
             } else {
               $("#path").addClass("invalid text-danger").removeClass("focus");
               $(".validation").removeClass("d-none");
@@ -74,11 +86,11 @@ function inputPath() {
     });
 }
 
-function spinner(input) {
+function spinner(d,csvD) {
   $("#directoryPicker").fadeOut("slow", function () {
     $("#directoryPicker").remove();
     $("#spinner").fadeIn("slow", async function () {
-      const result = await main(input)
+      const result = await main(d,csvD)
       let practices = result[0];
       let sdks = result[1];
       let sdkPractices = result[2];

@@ -33,7 +33,7 @@ class Api():
     def __init__(self, window):
         self.window = window
 
-    def main(self, d):
+    def main(self, d, csvD):
         (first_party_info, other_files, sdks, third_party_info, e) = \
             load_data(d)
         self.window.evaluate_js("$('#process').html('Analyzing Data...')")
@@ -41,7 +41,7 @@ class Api():
             analyze_data(first_party_info, other_files, sdks, third_party_info, e)
         self.window.evaluate_js("$('#process').html('Preparing Privacy Policy...')")
         (practices, sdks, thirdPartyAnalysis) = \
-            configure_data(practices_results, thirdParty_results)
+            configure_data(practices_results, thirdParty_results,csvD)
         return [practices, sdks, thirdPartyAnalysis]
 
     def validate(self, d):
@@ -59,6 +59,13 @@ class Api():
             if filename.endswith(".xcodeproj"):
                 valid = True
         return valid
+
+    def validateCSVFolder(self,d):
+        valid = False
+        directory = os.fsencode(d)
+        if d == "" or os.path.isdir(d) == False:
+            return False
+        return True
     
     def showFolderDialog(self):
         """
