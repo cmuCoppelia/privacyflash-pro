@@ -69,6 +69,10 @@ def createThirdPartyJson(result):
         "REMINDERS": {}, "MUSIC": {}, "HOMEKIT": {}, "SPEECH": {},
         "MOTION": {}, "FACEBOOK": {}, "PURCHASES": {}, "TRACKING": {},
         "GOOGLE": {}}
+    f = open('../csvfiles/3rd_party_test.csv', 'w')
+    writer = csv.writer(f)
+    writer.writerow(["practice_name", "sdk"])
+
     thirdPartyPractices = {}
     sdks = {}
     index = 0
@@ -90,6 +94,12 @@ def createThirdPartyJson(result):
             json[str(value)][index] =\
                 {"PURPOSE": purpose, "USED": True}
         index += 1
+
+        for key , value in thirdPartyPractices.items():
+            for sdkName in value:
+                writer.writerow([key,sdkName])
+
+    f.close()
     return (json, sdks, thirdPartyPractices)
 
 def manageEvidence(evidenceLst, practice, usedFP):
