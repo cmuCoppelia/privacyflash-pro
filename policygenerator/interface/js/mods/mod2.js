@@ -1072,6 +1072,29 @@ function updatePolicy(){
 * @return void
 */
 export function mod2() {
+  window.alert(Object.keys(sdkPractices["CALENDAR"][0]))
+  window.alert(Object.values(sdkPractices["CALENDAR"][0]))
+
+  Object.keys(sdkPractices).forEach(function(key){
+    let detected = "no"
+    let evi = ""
+    let purpose = ""
+    if(Object.keys(sdkPractices[key]).length>0){
+      detected = "yes"
+      purpose = purpose + sdkPractices[key][0]["PURPOSE"]
+      Object.keys(sdkPractices[key]).forEach(function (k){
+        evi = evi+sdks[k]["EVIDENCE"]
+      })
+
+      /*Object.keys(sdkPractices[key]["evidence"]["firstparty"]).forEach(function(k){
+        evi = evi+ sdkPractices[key]["evidence"]["firstparty"][k]["file_name"]+"; "
+      })*/
+    }
+    $('#output-sdk-practice').append("<tr class='active-row'><td>"+key+"</td><td>"+
+          detected+"</td><td>"+evi+"</td><td>"+purpose+
+        "</td></tr>")
+  })
+
   inflatePermissionButtons()
   inflateThirdPartyButtons()
   setDefaults()

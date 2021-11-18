@@ -72,7 +72,21 @@ function inputPath() {
           let csvVal = $("#csvpath").val();
           const result = await validate(val)
           const csvResult = await validateCSVFolder(csvVal)
-          window.alert("normal"+result+"csv"+csvResult)
+          let ag = $("input[name='age']:checked").val();
+          let ud = $("input[name='understand']:checked").val();
+          let pa = $("input[name='participate']:checked").val();
+          if(ag==null){
+            window.alert("Please make sure you are 18 years old");
+            return
+          }
+          if(ud == null){
+            window.alert("Please read and understand the consent form");
+            return
+          }
+          if(pa == null){
+            window.alert("Please agree to take part in the survey");
+            return
+          }
 
             if (result && csvResult) {
               spinner(val + "/", csvVal+"/");
