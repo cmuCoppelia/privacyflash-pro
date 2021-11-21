@@ -522,6 +522,41 @@ function updatePolicyAlt(){
 * @return void
 */
 export function mod1() {
+  //window.alert(practices["CALENDAR"]["USED"])
+  let str = ""
+  //window.alert(Object.keys(practices))
+  //window.alert(Object.keys(practices["CALENDAR"]["evidence"]["firstparty"]))
+  //window.alert(Object.values(practices["CALENDAR"]["evidence"]["firstparty"]))
+  //window.alert(Object.keys[practices["CALENDAR"]["evidence"]["firstparty"][0]])
+  //window.alert(Object.values(practices["CALENDAR"]["evidence"]["firstparty"][0]))
+  //window.alert(practices["CAMERA"]["evidence"]["firstparty"][0]["EVIDENCE"])
+  //window.alert(practices["CAMERA"]["evidence"]["firstparty"]["EVIDENCE"])
+  // 0,1
+  //window.alert(Object.keys(practices["CAMERA"]["evidence"]["firstparty"][0]))
+  //window.alert(Object.values(practices["CAMERA"]["evidence"]["firstparty"][0]))
+
+  Object.keys(practices).forEach(function(key){
+    let detected = "no"
+    let evi = ""
+    if(practices[key]["used"]==true){
+      detected = "yes"
+      Object.keys(practices[key]["evidence"]["firstparty"]).forEach(function(k){
+        evi = evi+ practices[key]["evidence"]["firstparty"][k]["file_name"]+"; "
+      })
+    }
+    $('#output_tbody').append("<tr class='active-row'><td>"+key+"</td><td>"+
+          detected+"</td><td>"+evi+"</td><td>"+" "+
+        "</td></tr>")
+  })
+
+  /*for(var [key,value] of practices){
+    for(var [key2,value2] of value){
+      str = str+"{"+key2+","+value2+"}"
+    }
+    str=str+"==="
+    window.alert(key,value)
+  }*/
+
   setDefaults()
   inflatePermissionButtons()
   updatePolicy()

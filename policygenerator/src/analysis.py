@@ -814,4 +814,7 @@ def analyze_data(first_party_info, first_party_files, sdks, third_party_info, en
     formatted_third_party = check_database(third_party_info, formatted_third_party)
     sorted_evidence = order_by_practice(formatted_evidence, first_party_info)
 
+    for key, value in sorted_evidence.items():
+        print('{key}:{value}'.format(key=key, value=value))
+
     return sorted_evidence, unused, formatted_third_party

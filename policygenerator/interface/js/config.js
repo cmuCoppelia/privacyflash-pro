@@ -58,12 +58,38 @@ function inputPath() {
           }
          })
 
+        $("#csvpath").click(async function () {
+          const dir = await showFolderDialog()
+          if (dir != null && dir.length !== 0) {
+            $("#csvpath").val(dir);
+            $("#csvpath").removeClass("invalid text-danger").addClass("focus");
+            $(".validation").addClass("d-none");
+          }
+         })
+
         $("#generate").click(async function () {
           let val = $("#path").val();
+          let csvVal = $("#csvpath").val();
           const result = await validate(val)
+          const csvResult = await validateCSVFolder(csvVal)
+          let ag = $("input[name='age']:checked").val();
+          let ud = $("input[name='understand']:checked").val();
+          let pa = $("input[name='participate']:checked").val();
+          if(ag==null){
+            window.alert("Please make sure you are 18 years old");
+            return
+          }
+          if(ud == null){
+            window.alert("Please read and understand the consent form");
+            return
+          }
+          if(pa == null){
+            window.alert("Please agree to take part in the survey");
+            return
+          }
 
-            if (result) {
-              spinner(val + "/");
+            if (result && csvResult) {
+              spinner(val + "/", csvVal+"/");
             } else {
               $("#path").addClass("invalid text-danger").removeClass("focus");
               $(".validation").removeClass("d-none");
@@ -74,11 +100,11 @@ function inputPath() {
     });
 }
 
-function spinner(input) {
+function spinner(d,csvD) {
   $("#directoryPicker").fadeOut("slow", function () {
     $("#directoryPicker").remove();
     $("#spinner").fadeIn("slow", async function () {
-      const result = await main(input)
+      const result = await main(d,csvD)
       let practices = result[0];
       let sdks = result[1];
       let sdkPractices = result[2];

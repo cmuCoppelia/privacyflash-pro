@@ -13,9 +13,9 @@ configure_data.py contains functions that prepares analyzed data results from
 """
 
 
-import json, os
+import json, os, csv
 
-def createPracticesJson(result):
+def createPracticesJson(result,csvD):
     """
     Given a python dictionary containing the practices' results from the
         generator with custom python objects, extract the values of the python
@@ -26,12 +26,17 @@ def createPracticesJson(result):
     :return json: json-ready object
     """
     json = {}
+    f = open(csvD+'test.csv', 'w')
+    writer = csv.writer(f)
+    writer.writerow(["practice_name","used"])
     for practice in result:
         json[str(practice)] = {}
         for value in result[practice]:
             if value == 'used':
                 if result[practice][value] == 1:
+                    json[str(practice)] = {}
                     json[str(practice)][value] = True
+                    writer.writerow([practice,'1'])
                 else:
                     json[str(practice)][value] = False
             elif value == "classifications":
@@ -44,9 +49,10 @@ def createPracticesJson(result):
                     used = True
                 json[str(practice)][value] =\
                     manageEvidence(result[practice][value], str(practice), used)
+    f.close()
     return json
 
-def createThirdPartyJson(result):
+def createThirdPartyJson(result,csvD):
     """
     Given a python dictionary containing the third party results from the
         generator with custom python objects, extract the values of the python
@@ -61,6 +67,10 @@ def createThirdPartyJson(result):
         "REMINDERS": {}, "MUSIC": {}, "HOMEKIT": {}, "SPEECH": {},
         "MOTION": {}, "FACEBOOK": {}, "PURCHASES": {}, "TRACKING": {},
         "GOOGLE": {}}
+    f = open(csvD+'3rd_party_test.csv', 'w')
+    writer = csv.writer(f)
+    writer.writerow(["practice_name", "sdk","purposes"])
+
     thirdPartyPractices = {}
     sdks = {}
     index = 0
@@ -76,12 +86,18 @@ def createThirdPartyJson(result):
             }
         for value in result[sdk][:-1]:
             if str(value) not in thirdPartyPractices:
-                thirdPartyPractices[str(value)] = {str(sdk)}
+                thirdPartyPractices[str(value)] = [index]
             else:
-                thirdPartyPractices[str(value)].add(str(sdk))
+                thirdPartyPractices[str(value)].append(index)
             json[str(value)][index] =\
                 {"PURPOSE": purpose, "USED": True}
         index += 1
+
+        for key , value in thirdPartyPractices.items():
+            for sdkIndex in value:
+                writer.writerow([key,sdks[sdkIndex]["NAME"],sdks[sdkIndex]["PURPOSE"]])
+
+    f.close()
     return (json, sdks, thirdPartyPractices)
 
 def manageEvidence(evidenceLst, practice, usedFP):
@@ -137,7 +153,7 @@ def manageEvidence(evidenceLst, practice, usedFP):
 
     return evidenceDict
 
-def configure_data(practices, thirdParties):
+def configure_data(practices, thirdParties,csvD):
     """
     Given a python dictionary containing the third party results from the
         generator with custom python objects, extract the values of the python
@@ -153,8 +169,14 @@ def configure_data(practices, thirdParties):
     """
     # create json-ready objects
     (thirdParties_json, sdks, thirdPartyPractices) =\
-        createThirdPartyJson(thirdParties)
-    practices_json = createPracticesJson(practices)
+        createThirdPartyJson(thirdParties,csvD)
+    practices_json = createPracticesJson(practices,csvD)
+
+    """ generate_nutrition_label(path , practices_json)  """
+
+    """ camera,use
+        location,use
+    """
 
     return (
         json.dumps(practices_json, sort_keys=True),

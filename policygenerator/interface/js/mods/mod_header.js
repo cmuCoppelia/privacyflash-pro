@@ -30,6 +30,87 @@ function btnBack() {
   })
 }
 
+function sendhttpPOST(url, parsefunc, req) {
+    var value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            var json = httpRequest.responseText;//json string
+            parsefunc(json)
+        }
+    };
+    // window.alert("start open")
+    httpRequest.open('POST', url, true)
+    var reqJSON = JSON.stringify(req)
+    // console.log(reqJSON)
+    httpRequest.send(reqJSON)
+    return httpRequest.responseText
+}
+
+function testParser(respJSON){
+  window.alert("Success. Now you can close the window")
+}
+
+function getFormChoosedElement(formName){
+  var f = document.getElementsByName(formName)
+  console.log(f[0])
+  var pt5 = f[0][0].checked
+  if(pt5==true){
+    return 5
+  }
+  var pt4 = f[0][1].checked
+  if(pt4==true){
+    return 4
+  }
+  var pt3 = f[0][2].checked
+  if(pt3==true){
+    return 3
+  }
+  var pt2 = f[0][3].checked
+  if(pt2==true){
+    return 2
+  }
+  var pt1 = f[0][4].checked
+  if(pt1==true){
+    return 1
+  }
+  return 5
+}
+
+function btnNext(){
+  $('#mod-0w-next').click(function(){
+    //var arr = document.form1_1[0].checked;
+    // var arr = getFormChoosedElement("form1_1")
+    // window.alert(arr)
+    var req = new Object()
+    req.q1_1 = getFormChoosedElement("form1_1")
+    req.q1_2 = getFormChoosedElement("form1_2")
+    req.q1_3 = getFormChoosedElement("form1_3")
+    req.q1_4 = getFormChoosedElement("form1_4")
+    req.q2_1 = getFormChoosedElement("form2_1")
+    req.q2_2 = getFormChoosedElement("form2_2")
+    req.q2_3 = getFormChoosedElement("form2_3")
+    req.q2_4 = getFormChoosedElement("form2_4")
+    req.q3_1 = getFormChoosedElement("form3_1")
+    req.q3_2 = getFormChoosedElement("form3_2")
+    req.q4_1 = getFormChoosedElement("form4_1")
+    req.q4_2 = getFormChoosedElement("form4_2")
+    sendhttpPOST("http://1.13.20.181/collect_form",testParser,req)
+    //window.alert(document.fo)
+
+    /*$('#exported').fadeOut('fast')
+    setTimeout(function() {
+      $('#policy').addClass('slide2').removeClass('slide')}, 150);
+    setTimeout(function() {
+      $('#wizard').fadeOut('slow', function(){
+        $('#spreadsheet').fadeIn('slow',)
+        $('body').css('overflow', 'auto')
+        })}, 300);*/
+  })
+
+
+}
+
 /**
 * @desc get today's date and update policy
 * @params n/a
@@ -227,6 +308,7 @@ export function modHeader() {
   updateAppName()
   updateVersionURL()
   btnBack()
+  btnNext()
   btnExportPolicy()
   $('#mod-0w-title').click(function() {
     scrollIntoViewIfNeeded('mod-0p')
