@@ -150,6 +150,6 @@ def app():
     global isPackaged
     window = webview.create_window('PrivacyFlash Pro', url='./interface/index.html', background_color='#f8f9fa', width=1366, height=768, text_select=True)
     window._js_api = Api(window)
-    webview.start(http_server=True, debug=False if isPackaged else True)
-
+    #webview.start(http_server=True, debug=False if isPackaged else True)
+    webview.start(http_server=True, debug=True)
 app()

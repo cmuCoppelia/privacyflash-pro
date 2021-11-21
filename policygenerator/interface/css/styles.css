@@ -296,6 +296,14 @@ a.disabled {
 
 }
 
+.spreadsheet{
+   transform: translate(0%, 42px);
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+  -ms-transition: all ease 0.5s;
+}
+
 .shadow{
   box-shadow: -1em 0 1em -1em #333;
   -webkit-transition: all ease 0.7s;
@@ -413,4 +421,8 @@ div.extra-margin-bottom {
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+.survey_input{
+display:inline;
 }

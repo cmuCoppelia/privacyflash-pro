@@ -1072,8 +1072,8 @@ function updatePolicy(){
 * @return void
 */
 export function mod2() {
-  window.alert(Object.keys(sdkPractices["CALENDAR"][0]))
-  window.alert(Object.values(sdkPractices["CALENDAR"][0]))
+  //window.alert(Object.keys(sdkPractices["CALENDAR"][0]))
+  //window.alert(Object.values(sdkPractices["CALENDAR"][0]))
 
   Object.keys(sdkPractices).forEach(function(key){
     let detected = "no"
