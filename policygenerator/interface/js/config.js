@@ -21,18 +21,35 @@ export async function startGUI() {
     $('#boot').fadeIn('slow', function() {
     setTimeout(function() {
       $('#boot').fadeOut('slow', function() {
-        disclaimer()
+        consent()
       })}, 1500);
     })
   } else {
-    disclaimer()
+    consent()
   }
 }
 
 async function consent() {
     $("#consent").fadeIn("slow", function () {
       $("#agree").click(function () {
-        disclaimer()
+          let ag = $("input[name='age']:checked").val();
+          let ud = $("input[name='understand']:checked").val();
+          let pa = $("input[name='participate']:checked").val();
+          if(ag==null){
+            window.alert("Please make sure you are 18 years old");
+            return
+          }
+          if(ud == null){
+            window.alert("Please read and understand the consent form");
+            return
+          }
+          if(pa == null){
+            window.alert("Please agree to take part in the survey");
+            return
+          }
+        $("#consent").fadeOut("slow",function () {
+          disclaimer()
+        })
       });
     });
 }
