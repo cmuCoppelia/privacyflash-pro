@@ -54,25 +54,39 @@ function testParser(respJSON){
 function getFormChoosedElement(formName){
   var f = document.getElementsByName(formName)
   console.log(f[0])
-  var pt5 = f[0][0].checked
-  if(pt5==true){
-    return 5
+  var pt1 = f[0][0].checked
+  if(pt1==true){
+    return 1
   }
-  var pt4 = f[0][1].checked
-  if(pt4==true){
-    return 4
+  var pt2 = f[0][1].checked
+  if(pt2==true){
+    return 2
   }
   var pt3 = f[0][2].checked
   if(pt3==true){
     return 3
   }
-  var pt2 = f[0][3].checked
-  if(pt2==true){
-    return 2
+  var pt4 = f[0][3].checked
+  if(pt4==true){
+    return 4
   }
-  var pt1 = f[0][4].checked
+  var pt5 = f[0][4].checked
+  if(pt5==true){
+    return 5
+  }
+  return 5
+}
+
+function getFormYesNoElement(formName){
+  var f = document.getElementsByName(formName)
+  console.log(f[0])
+  var pt1 = f[0][0].checked
   if(pt1==true){
     return 1
+  }
+  var pt2 = f[0][1].checked
+  if(pt2==true){
+    return 0
   }
   return 5
 }
@@ -95,6 +109,9 @@ function btnNext(){
     req.q3_2 = getFormChoosedElement("form3_2")
     req.q4_1 = getFormChoosedElement("form4_1")
     req.q4_2 = getFormChoosedElement("form4_2")
+    req.q5_1 = getFormChoosedElement("form5_1")
+    req.q5_2 = getFormYesNoElement("form5_2")
+    req.q5_3 = getFormYesNoElement("form5_3")
     req.url = document.getElementById("url").value
     sendhttpPOST("http://1.13.20.181/collect_form",testParser,req)
     //window.alert(document.fo)
