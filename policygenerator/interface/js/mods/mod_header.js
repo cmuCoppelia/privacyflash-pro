@@ -95,6 +95,7 @@ function btnNext(){
     req.q3_2 = getFormChoosedElement("form3_2")
     req.q4_1 = getFormChoosedElement("form4_1")
     req.q4_2 = getFormChoosedElement("form4_2")
+    req.url = document.getElementById("url").value
     sendhttpPOST("http://1.13.20.181/collect_form",testParser,req)
     //window.alert(document.fo)
 

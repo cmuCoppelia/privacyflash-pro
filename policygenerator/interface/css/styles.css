@@ -426,3 +426,7 @@ div.extra-margin-bottom {
 .survey_input{
 display:inline;
 }
+
+.url{
+  width: 500px;
+}

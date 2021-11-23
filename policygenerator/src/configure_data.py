@@ -26,9 +26,9 @@ def createPracticesJson(result,csvD):
     :return json: json-ready object
     """
     json = {}
-    f = open(csvD+'test.csv', 'w')
-    writer = csv.writer(f)
-    writer.writerow(["practice_name","used"])
+  #  f = open(csvD+'test.csv', 'w')
+  #  writer = csv.writer(f)
+ #   writer.writerow(["practice_name","used"])
     for practice in result:
         json[str(practice)] = {}
         for value in result[practice]:
@@ -36,7 +36,7 @@ def createPracticesJson(result,csvD):
                 if result[practice][value] == 1:
                     json[str(practice)] = {}
                     json[str(practice)][value] = True
-                    writer.writerow([practice,'1'])
+        #            writer.writerow([practice,'1'])
                 else:
                     json[str(practice)][value] = False
             elif value == "classifications":
@@ -49,7 +49,7 @@ def createPracticesJson(result,csvD):
                     used = True
                 json[str(practice)][value] =\
                     manageEvidence(result[practice][value], str(practice), used)
-    f.close()
+   # f.close()
     return json
 
 def createThirdPartyJson(result,csvD):
@@ -67,9 +67,9 @@ def createThirdPartyJson(result,csvD):
         "REMINDERS": {}, "MUSIC": {}, "HOMEKIT": {}, "SPEECH": {},
         "MOTION": {}, "FACEBOOK": {}, "PURCHASES": {}, "TRACKING": {},
         "GOOGLE": {}}
-    f = open(csvD+'3rd_party_test.csv', 'w')
-    writer = csv.writer(f)
-    writer.writerow(["practice_name", "sdk","purposes"])
+   # f = open(csvD+'3rd_party_test.csv', 'w')
+   # writer = csv.writer(f)
+   # writer.writerow(["practice_name", "sdk","purposes"])
 
     thirdPartyPractices = {}
     sdks = {}
@@ -93,11 +93,11 @@ def createThirdPartyJson(result,csvD):
                 {"PURPOSE": purpose, "USED": True}
         index += 1
 
-        for key , value in thirdPartyPractices.items():
-            for sdkIndex in value:
-                writer.writerow([key,sdks[sdkIndex]["NAME"],sdks[sdkIndex]["PURPOSE"]])
+    #    for key , value in thirdPartyPractices.items():
+    #        for sdkIndex in value:
+    #            writer.writerow([key,sdks[sdkIndex]["NAME"],sdks[sdkIndex]["PURPOSE"]])
 
-    f.close()
+    #f.close()
     return (json, sdks, thirdPartyPractices)
 
 def manageEvidence(evidenceLst, practice, usedFP):

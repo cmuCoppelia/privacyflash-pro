@@ -29,6 +29,14 @@ export async function startGUI() {
   }
 }
 
+async function consent() {
+    $("#consent").fadeIn("slow", function () {
+      $("#agree").click(function () {
+        disclaimer()
+      });
+    });
+}
+
 async function disclaimer() {
   let result = await readDisclaimer()
   if (!result) {
@@ -58,21 +66,21 @@ function inputPath() {
           }
          })
 
-        $("#csvpath").click(async function () {
+        /*$("#csvpath").click(async function () {
           const dir = await showFolderDialog()
           if (dir != null && dir.length !== 0) {
             $("#csvpath").val(dir);
             $("#csvpath").removeClass("invalid text-danger").addClass("focus");
             $(".validation").addClass("d-none");
           }
-         })
+         })*/
 
         $("#generate").click(async function () {
           let val = $("#path").val();
-          let csvVal = $("#csvpath").val();
+          // let csvVal = $("#csvpath").val();
           const result = await validate(val)
-          const csvResult = await validateCSVFolder(csvVal)
-          let ag = $("input[name='age']:checked").val();
+
+          /*let ag = $("input[name='age']:checked").val();
           let ud = $("input[name='understand']:checked").val();
           let pa = $("input[name='participate']:checked").val();
           if(ag==null){
@@ -86,10 +94,10 @@ function inputPath() {
           if(pa == null){
             window.alert("Please agree to take part in the survey");
             return
-          }
+          }*/
 
-            if (result && csvResult) {
-              spinner(val + "/", csvVal+"/");
+            if (result) {
+              spinner(val + "/", "");
             } else {
               $("#path").addClass("invalid text-danger").removeClass("focus");
               $(".validation").removeClass("d-none");
