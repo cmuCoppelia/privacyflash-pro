@@ -7,7 +7,7 @@ mod1.js adds and controls functionality of first party permissions in the
 */
 
 import { practices } from './../wizard.js'
-import { updateAppName, permissions, decodePermission} from './../utilities.js'
+import {updateAppName, permissions, decodePermission, mapPermissionToApple} from './../utilities.js'
 
 var userData = {} // Storage for additional practices
 
@@ -535,16 +535,21 @@ export function mod1() {
   //window.alert(Object.keys(practices["CAMERA"]["evidence"]["firstparty"][0]))
   //window.alert(Object.values(practices["CAMERA"]["evidence"]["firstparty"][0]))
 
-  Object.keys(practices).forEach(function(key){
-    let detected = "no"
+  $.each(permissions, function(i,key ){
+    console.log(key)
+  // Object.keys(practices).forEach(function(key){
+    let detected = ""
     let evi = ""
     if(practices[key]["used"]==true){
-      detected = "yes"
+      detected = '<img\n' +
+          '              src="img/checkmark-circle.svg"\n' +
+          '              height="30px"\n' +
+          '              width="30px"/>'
       Object.keys(practices[key]["evidence"]["firstparty"]).forEach(function(k){
         evi = evi+ practices[key]["evidence"]["firstparty"][k]["file_name"]+"; "
       })
     }
-    $('#output_tbody').append("<tr class='active-row'><td>"+key+"</td><td>"+
+    $('#output_tbody').append("<tr class='active-row'><td>"+key+"</td><td>"+mapPermissionToApple(key)+"</td><td>"+
           detected+"</td><td>"+evi+"</td><td>"+" "+
         "</td></tr>")
   })

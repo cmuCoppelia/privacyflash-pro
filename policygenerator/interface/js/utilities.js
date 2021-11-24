@@ -7,9 +7,27 @@ utilities.js contains helper functions
 
 
 // Technical permission names
-export const permissions = ["LOCATION", "CAMERA", "CONTACTS", "MICROPHONE",
+/*export const permissions = ["LOCATION", "CAMERA", "CONTACTS", "MICROPHONE",
   "PHOTOS", "CALENDAR", "HEALTH", "MUSIC", "BLUETOOTH", "MOTION", "REMINDERS",
-  "SPEECH", "HOMEKIT", "TRACKING"]
+  "SPEECH", "HOMEKIT", "TRACKING"]*/
+
+// music is not included
+export const permissions = ["HEALTH","MOTION","LOCATION","CONTACTS","PHOTOS","CAMERA",
+"MICROPHONE","SPEECH","TRACKING","CALENDAR","BLUETOOTH","REMINDERS","HOMEKIT"]
+
+export function mapPermissionToApple(permission){
+  const appleMap = {"LOCATION": "Precise Location & Coarse Location", "CAMERA": "Photos or Videos",
+    "CONTACTS": "Contacts", "MICROPHONE": "Audio Data", "PHOTOS": "Photos or Videos",
+    "CALENDAR": "Other Data Types", "HEALTH": "Health",
+    "BLUETOOTH": "Other Data Types", "MOTION": "Fitness",
+    "REMINDERS": "Other Data Types", "SPEECH": "Audio Data",
+    "HOMEKIT": "Other Data Types", "TRACKING": "Device ID"}
+  if (permission in appleMap) {
+    return appleMap[permission]
+  } else {
+    return permission
+  }
+}
  
 /**
 * @desc get proper name of permission from technical name

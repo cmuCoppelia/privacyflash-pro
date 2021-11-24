@@ -8,8 +8,9 @@ mod2.js adds and controls functionality of third party permissions in the
 
 
 import { sdkPractices, sdks, practices } from './../wizard.js'
-import { scrollHorizontalEnd, decodePermission, updateAppName, permissions, smoothScroll
-  } from './../utilities.js'
+import {
+  scrollHorizontalEnd, decodePermission, updateAppName, permissions, smoothScroll, mapPermissionToApple
+} from './../utilities.js'
 import { syncMod5Alt } from './mod5.js'
 import { syncMod7 } from './mod7.js'
 
@@ -1066,6 +1067,11 @@ function updatePolicy(){
   updateAppName()
 }
 
+function parseSDKPath(evidence){
+  var routeList = evidence.split("/")
+  return routeList[routeList.length-1]
+}
+
 /**
 * @desc loads current mod (module)
 * @params n/a
@@ -1075,22 +1081,26 @@ export function mod2() {
   //window.alert(Object.keys(sdkPractices["CALENDAR"][0]))
   //window.alert(Object.values(sdkPractices["CALENDAR"][0]))
 
-  Object.keys(sdkPractices).forEach(function(key){
-    let detected = "no"
+   $.each(permissions, function(i,key ){
+  // Object.keys(sdkPractices).forEach(function(key){
+    let detected = ""
     let evi = ""
     let purpose = ""
     if(Object.keys(sdkPractices[key]).length>0){
-      detected = "yes"
+      detected = '<img\n' +
+          '              src="img/checkmark-circle.svg"\n' +
+          '              height="30px"\n' +
+          '              width="30px"/>'
       purpose = purpose + sdkPractices[key][0]["PURPOSE"]
       Object.keys(sdkPractices[key]).forEach(function (k){
-        evi = evi+sdks[k]["EVIDENCE"]
+        evi = evi+parseSDKPath(sdks[k]["EVIDENCE"])
       })
 
       /*Object.keys(sdkPractices[key]["evidence"]["firstparty"]).forEach(function(k){
         evi = evi+ sdkPractices[key]["evidence"]["firstparty"][k]["file_name"]+"; "
       })*/
     }
-    $('#output-sdk-practice').append("<tr class='active-row'><td>"+key+"</td><td>"+
+    $('#output-sdk-practice').append("<tr class='active-row'><td>"+key+"</td><td>"+mapPermissionToApple(key)+"</td><td>"+
           detected+"</td><td>"+evi+"</td><td>"+purpose+
         "</td></tr>")
   })

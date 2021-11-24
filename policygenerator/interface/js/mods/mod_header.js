@@ -74,12 +74,11 @@ function getFormChoosedElement(formName){
   if(pt5==true){
     return 5
   }
-  return 5
+  return -1
 }
 
 function getFormYesNoElement(formName){
   var f = document.getElementsByName(formName)
-  console.log(f[0])
   var pt1 = f[0][0].checked
   if(pt1==true){
     return 1
@@ -88,7 +87,7 @@ function getFormYesNoElement(formName){
   if(pt2==true){
     return 0
   }
-  return 5
+  return -1
 }
 
 function btnNext(){
