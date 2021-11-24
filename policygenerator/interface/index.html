@@ -304,7 +304,415 @@ Copyright (c) 2019 David Baraka, Rafael Goldstein, Sarah Jin, Sebastian Zimmeck 
 
     <!-- Wizard -->
     <section class= "container bg-light p-5" id="wizard">
-    <h1>
+<!-- Section-0P -->
+        <div id="mod-0p">
+        <h1>
+          Next Steps
+        </h1>
+
+        <h2>Steps in Apple Interface</h2>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Steps in Apple's Interface</th>
+                    <th>What are we automating?</th>
+                    <th>Resources for you to consult</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>1. Do you collect data</td>
+                <td></td>
+                <td>Database: data must be stored for it to be considered collected.</td>
+            </tr>
+            <tr>
+                <td>2. Which data types do you collect?</td>
+                <td>Detection of the data types in your code</td>
+                <td>Database & library documentation</td>
+            </tr>
+            <tr>
+                <td>3a. Purpose of each data type</td>
+                <td>Purpose detection in 300 common libraries</td>
+                <td>Your code</td>
+            </tr>
+            <tr>
+                <td>3b. Whether the data type is linked to users</td>
+                <td></td>
+                <td>Database: is your data stored in a way that links it to users?</td>
+            </tr>
+             <tr>
+                <td>3c. Whether the data type is used to track users</td>
+                <td></td>
+                <td>Data use: do you send your data to 3rd parties for advertising?</td>
+            </tr>
+        </table>
+
+            <h2>Additional Instructions</h2>
+
+            <h4>What to have open:</h4>
+	        Database: Either open up your back-end database or a diagram of how your data is stored <br> <br>
+	        Code: Opening up Xcode will help you find answers more quickly <br> <br>
+	        Privacy Flash Pro tool: This is the tool we provide that will scan your code. <br> <br>
+
+            <h4>Optional resources:</h4>
+            Privacy policy: Matching your label to your company’s privacy policy can be useful. Also, the policy may mention data sharing that happens outside of what you see in Xcode.<br><br>
+
+            <h2>Now, update the privacy details for your application.</h2> <br> <br>
+
+            <h2>Reflection Questions for after filling out the labels - to ensure nothing was missed</h2>
+
+            <h4>Do you advertise?</h4>
+            If yes, make sure that “developer’s advertising or marketing” and “3rd party advertising” are checked for relevant data types.<br> <br>
+
+            <h4>How do you run diagnostics?</h4>
+            If you’re using Apple’s default App Analytics, this does NOT require extra reporting. [confirm this].<br> <br>
+            If you’re using any other service (ex. Crashlytics, Microsoft), make sure you fill out the “Usage Data” and “Diagnostics” categories with those services in mind.<br><br>
+
+            <h4>Are there data types you can’t see?</h4>
+            If only Apple can access the data, you do NOT need to report it. [we need to confirm this]<br> <br>
+            If a 3rd party (ex. AdMob) accesses it, you DO need to report it.<br> <br>
+
+            <h4>Do you have any way to analyze individual app users?</h4>
+            If yes, make sure you mark “linked to users” for each data type used for this.<br> <br>
+            If yes AND you share these with advertisers, make sure you mark “data used to track users”.<br> <br>
+
+            <h4>Where do your users live?</h4>
+            If users live in the EU, California, or other places with privacy laws that define personal data a certain way, think about that compared to which items you marked as “linked” to make sure you didn’t miss anything.<br> <br>
+            If you’re not sure, it may be easiest to default to “linked”.<br> <br>
+
+            <h4>Did you report all of the behaviors of the pods, frameworks, SDKs, or libraries you used?</h4> <br> <br>
+
+            <h2>Survey Questions</h2>
+            <h3>Please rate your agreement with the following statements on a scale of 1 to 5, where 1 is strongly disagree and 5 is strongly agree.</h3>
+
+            <h4>Perceived Usefulness:</h4>
+            PFP allows me to construct accurate privacy labels？
+            <form name = "form1_1">
+            <input class = "survey_input" type="radio" value="1p" name = "1_1">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "1_1">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "1_1">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "1_1">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "1_1">5&nbsp
+            </form>
+            PFP saves me time in constructing privacy labels?
+            <form name = "form1_2">
+            <input class = "survey_input" type="radio" value="1p" name = "1_2">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "1_2">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "1_2">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "1_2">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "1_2">5&nbsp
+            </form>
+            PFP help me better understand the privacy related to my work?
+            <form name = "form1_3">
+            <input class = "survey_input" type="radio" value="1p" name = "1_3">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "1_3">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "1_3">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "1_3">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "1_3">5&nbsp
+            </form>
+
+            Using PFP would increase the efficiency of my work?
+            <form name = "form1_4">
+            <input class = "survey_input" type="radio" value="1p" name = "1_4">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "1_4">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "1_4">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "1_4">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "1_4">5&nbsp
+            </form>
+
+            <h4>Perceived Ease of Use:</h4>
+            My interaction with PFP is clear and understandable?
+            <form name = "form2_1">
+            <input class = "survey_input" type="radio" value="1p" name = "2_1">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "2_1">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "2_1">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "2_1">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "2_1">5&nbsp
+            </form>
+
+            I find it easy to get PFP to do what I want it to do?
+            <form name = "form2_2">
+            <input class = "survey_input" type="radio" value="1p" name = "2_2">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "2_2">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "2_2">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "2_2">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "2_2">5&nbsp
+            </form>
+
+            Learning to operate PFP is easy for me?
+            <form name = "form2_3">
+            <input class = "survey_input" type="radio" value="1p" name = "2_3">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "2_3">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "2_3">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "2_3">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "2_3">5&nbsp
+            </form>
+
+            I find PFP easy to use?
+            <form name = "form2_4">
+            <input class = "survey_input" type="radio" value="1p" name = "2_4">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "2_4">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "2_4">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "2_4">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "2_4">5&nbsp
+            </form>
+
+            <h4>Attitudes towards PFP use:</h4>
+            PFP makes my work more interesting?
+            <form name = "form3_1">
+            <input class = "survey_input" type="radio" value="1p" name = "3_1">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "3_1">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "3_1">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "3_1">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "3_1">5&nbsp
+            </form>
+
+            PFP makes me more willing to understand the privacy regulations?
+            <form name = "form3_2">
+            <input class = "survey_input" type="radio" value="1p" name = "3_2">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "3_2">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "3_2">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "3_2">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "3_2">5&nbsp
+            </form>
+
+            <h4>Intention to use:</h4>
+            I will use PFP in my work in the future?
+            <form name = "form4_1">
+            <input class = "survey_input" type="radio" value="1p" name = "4_1">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "4_1">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "4_1">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "4_1">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "4_1">5&nbsp
+            </form>
+
+            I plan to use PFP often?
+            <form name = "form4_2">
+            <input class = "survey_input" type="radio" value="1p" name = "4_2">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "4_2">2&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "4_2">3&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "4_2">4&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "4_2">5&nbsp
+            </form>
+            <br>
+            <br>
+            <h3>Demographic Questions</h3>
+            How many apps have you published?
+            <form name = "form5_1">
+            <input class = "survey_input" type="radio" value="1p" name = "5_1">1&nbsp
+            <input class = "survey_input" type="radio" value="2p" name = "5_1">2-3&nbsp
+            <input class = "survey_input" type="radio" value="3p" name = "5_1">4-5&nbsp
+            <input class = "survey_input" type="radio" value="4p" name = "5_1">6-7&nbsp
+            <input class = "survey_input" type="radio" value="5p" name = "5_1">8+&nbsp
+            </form>
+
+            Have you filled out a nutrition label before?
+            <form name = "form5_2">
+                <input class = "survey_input" type ="radio" value = "1p" name = "5_2">yes&nbsp
+                <input class = "survey_input" type ="radio" value = "2p" name = "5_2" >no&nbsp
+            </form>
+
+             Do you work full time as a developer?
+            <form name = "form5_3">
+                <input class = "survey_input" type ="radio" value = "1p" name = "5_3">yes&nbsp
+                <input class = "survey_input" type ="radio" value = "2p" name = "5_3" >no&nbsp
+            </form>
+            <br>
+            <br>
+
+            <h4>Paste the url of your app on the Apple App Store here:</h4>
+            <input value = "Paste your url here" class = "url" id="url">
+
+            <button type="button"
+                  style="margin: 5px"
+                  class="btn btn-info btn-sm"
+                  id='mod-0w-next'>
+              <span style="font-weight: bold;">Submit</span>
+              <img
+              src="img/checkmark-circle.svg"
+              height="15px"
+              width="15px"/>
+          </button>
+
+
+        </div>
+
+
+      <!--<div id="mod-0p">
+        <h1>
+          Privacy Policy for the<br><span class="app-name"></span> App
+        </h1>
+        <br>
+        <p>
+          <strong>Last updated:</strong> <span id="mod-0p-date"></span>
+          <br>
+          <span id="mod-0p-url"></span>
+        </p>
+        <p>
+          We are the developers of <span class="app-name"></span>. This privacy policy describes how we process your personal information and which privacy rights you have when you are using <span class="app-name"></span>. Please contact us at the contact information <a href="#contact_us">below</a> if you have any questions or comments.
+        </p>
+        <p>
+          <ol id="links">
+            <li><a href="#personal_information_collection">Personal Information Collection and Use</a></li>
+            <li><a href="#personal_information_sharing">Personal Information Sharing</a></li>
+            <li><a href="#social_login">Social Logins</a></li>
+            <li><a href="#in-app_purchase">In-app Purchase Information</a></li>
+            <li id="mod-5p-link"><a href="#california_privacy_rights">Privacy Rights of California Residents</a></li>
+            <li id="mod-6p-link"><a href="#eea_privacy_rights">Privacy Rights of Users in the European Economic Area</a></li>
+            <li><a href="#children_personal_information">Children's Personal Information</a></li>
+            <li><a href="#personal_information_retention">How Long We Keep Your Personal Information</a></li>
+            <li><a href="#personal_information_protection">How We Protect Your Personal Information</a></li>
+            <li><a href="#policy_changes">Policy Changes</a></li>
+            <li><a href="#accessibility">Accessibility</a></li>
+            <li><a href="#contact_us">Contact Us</a></li>
+          </ol>
+        </p>
+      </div>
+
+      <br>-->
+
+      <!-- Section-1P -->
+      <!--<div id="mod-1p">
+        <h2 id="personal_information_collection">
+          <span class="num">1</span>. Personal Information Collection and Use
+        </h2>
+        <div id="mod-1p-practices"></div>
+        <div id="mod-1p-practices-alt"></div>
+      </div>-->
+
+      <!-- Section-2P -->
+      <!--<div id="sec-title-2P">
+        <br>
+        <h2 id="personal_information_sharing">
+          <span class="num">2</span>. Personal Information Sharing
+        </h2>
+        <div id="mod-2p-practices"></div>
+        <div id="mod-2p-practices-alt"></div>
+      </div>-->
+
+      <!-- Section-3P -->
+      <!--<div id="sec-title-3P">
+        <br>
+        <h2 id="social_login">
+          <span class="num">3</span>. Social Logins
+        </h2>
+        <div id="mod-3p-content"></div>
+      </div>-->
+
+      <!-- Section-4P -->
+      <!--<div id="sec-title-4P">
+        <br>
+        <h2 id="in-app_purchase">
+            <span class="num">4</span>. In-app Purchase Information
+        </h2>
+        <div id="mod-4p-content"></div>
+      </div>-->
+
+      <!-- Section-5P -->
+      <!--<div class="exclude" id="sec-title-5P">
+        <br>
+        <h2 id="california_privacy_rights">
+            <span class="num">5</span>. Privacy Rights of California Residents
+        </h2>
+        <div id="mod-5p-content">
+          <div class="alert alert-info" role="alert">
+            Based on your selection, this Section will be omitted in the exported privacy policy.
+          </div>
+        </div>
+      </div>-->
+
+      <!-- Section-6P -->
+      <!--<div class="exclude" id="sec-title-6P">
+        <br>
+        <h2 id="eea_privacy_rights">
+            <span class="num">6</span>. Privacy Rights of Users in the European Economic Area
+        </h2>
+        <div id="mod-6p-content">
+          <div class="alert alert-info" role="alert">
+              Based on your selection, this Section will be omitted in the exported privacy policy.
+          </div>
+        </div>
+      </div>-->
+
+      <!-- Section-7P -->
+      <!--<div id="sec-title-7P">
+        <br>
+        <h2 id="children_personal_information">
+          <span class="num">7</span>. Children's Personal Information
+        </h2>
+        <div id="mod-7p-content">
+        </div>
+      </div>-->
+
+      <!-- Section-8P -->
+      <!--<div id="mod-8p-title">
+        <br>
+        <h2 id="personal_information_retention">
+          <span class="num">8</span>. How Long We Keep Your Personal Information
+        </h2>
+        <div id="mod-8p-content">-->
+          <!-- Content Inflated Here -->
+        <!--</div>
+      </div>-->
+
+      <!-- Section-9P -->
+      <!--<div id="sec-title-9P">
+        <br>
+        <h2 id="personal_information_protection">
+          <span class="num">9</span>. How We Protect Your Personal Information
+        </h2>
+        <div id="mod-9p-content"> -->
+          <!-- Content Inflated Here -->
+        <!--</div>
+      </div>-->
+
+      <!-- Section-10P -->
+      <!--<div id="sec-title-10P">
+        <br>
+        <h2 id="policy_changes">
+          <span class="num">10</span>. Policy Changes
+        </h2>
+        <div id="mod-10p-content">-->
+          <!-- Content Inflated Here -->
+        <!--</div>
+      </div>-->
+
+      <!-- Section-11P -->
+      <!-- <div id="sec-title-11P">
+        <br>
+        <h2 id="accessibility">
+          <span class="num">11</span>. Accessibility
+        </h2>
+        <div id="mod-11p-content">-->
+          <!-- Content Inflated Here -->
+        <!--</div>
+      </div>-->
+
+      <!-- Section-12P -->
+      <!--<div id="sec-title-12P" class="extra-margin-bottom">
+        <br>
+        <h2 id="contact_us">
+          <span class="num">12</span>. Contact Us
+        </h2>
+        <p>Please contact us if you have any questions or concerns.</p>
+        <div id="mod-12p-name"></div>
+        <div id="mod-12p-email"></div>
+      </div>-->
+
+
+        <!-- Section User -->
+        <!--<div id="sec-title-Instructions" class="extra-margin-bottom">
+        <br>
+        <h2 id="contact_us">
+          <span class="num">1</span>. Apple's Interface
+        </h2>
+        <p>Please contact us if you have any questions or concerns.</p>
+      </div>-->
+    </section>
+
+    <!-- Policy -->
+    <section style="width: 50%;" class="container p-5 bg-white" id="policy">
+
+        <h1>
         PrivacyFlash Pro<br>Wizard
     </h1>
     <br>
@@ -1609,413 +2017,7 @@ Copyright (c) 2019 David Baraka, Rafael Goldstein, Sarah Jin, Sebastian Zimmeck 
             </div>
         </div>
       </div>
-    </section>
 
-    <!-- Policy -->
-    <section style="width: 50%;" class="container p-5 bg-white" id="policy">
-      <!-- Section-0P -->
-        <div id="mod-0p">
-        <h1>
-          Next Steps
-        </h1>
-
-        <h2>Steps in Apple Interface</h2>
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Steps in Apple's Interface</th>
-                    <th>What are we automating?</th>
-                    <th>Resources for you to consult</th>
-                </tr>
-            </thead>
-            <tr>
-                <td>1. Do you collect data</td>
-                <td></td>
-                <td>Database: data must be stored for it to be considered collected.</td>
-            </tr>
-            <tr>
-                <td>2. Which data types do you collect?</td>
-                <td>Detection of the data types in your code</td>
-                <td>Database & library documentation</td>
-            </tr>
-            <tr>
-                <td>3a. Purpose of each data type</td>
-                <td>Purpose detection in 300 common libraries</td>
-                <td>Your code</td>
-            </tr>
-            <tr>
-                <td>3b. Whether the data type is linked to users</td>
-                <td></td>
-                <td>Database: is your data stored in a way that links it to users?</td>
-            </tr>
-             <tr>
-                <td>3c. Whether the data type is used to track users</td>
-                <td></td>
-                <td>Data use: do you send your data to 3rd parties for advertising?</td>
-            </tr>
-        </table>
-
-            <h2>Additional Instructions</h2>
-
-            <h4>What to have open:</h4>
-	        Database: Either open up your back-end database or a diagram of how your data is stored <br> <br>
-	        Code: Opening up Xcode will help you find answers more quickly <br> <br>
-	        Privacy Flash Pro tool: This is the tool we provide that will scan your code. <br> <br>
-
-            <h4>Optional resources:</h4>
-            Privacy policy: Matching your label to your company’s privacy policy can be useful. Also, the policy may mention data sharing that happens outside of what you see in Xcode.<br><br>
-
-            <h2>Now, update the privacy details for your application.</h2> <br> <br>
-
-            <h2>Reflection Questions for after filling out the labels - to ensure nothing was missed</h2>
-
-            <h4>Do you advertise?</h4>
-            If yes, make sure that “developer’s advertising or marketing” and “3rd party advertising” are checked for relevant data types.<br> <br>
-
-            <h4>How do you run diagnostics?</h4>
-            If you’re using Apple’s default App Analytics, this does NOT require extra reporting. [confirm this].<br> <br>
-            If you’re using any other service (ex. Crashlytics, Microsoft), make sure you fill out the “Usage Data” and “Diagnostics” categories with those services in mind.<br><br>
-
-            <h4>Are there data types you can’t see?</h4>
-            If only Apple can access the data, you do NOT need to report it. [we need to confirm this]<br> <br>
-            If a 3rd party (ex. AdMob) accesses it, you DO need to report it.<br> <br>
-
-            <h4>Do you have any way to analyze individual app users?</h4>
-            If yes, make sure you mark “linked to users” for each data type used for this.<br> <br>
-            If yes AND you share these with advertisers, make sure you mark “data used to track users”.<br> <br>
-
-            <h4>Where do your users live?</h4>
-            If users live in the EU, California, or other places with privacy laws that define personal data a certain way, think about that compared to which items you marked as “linked” to make sure you didn’t miss anything.<br> <br>
-            If you’re not sure, it may be easiest to default to “linked”.<br> <br>
-
-            <h4>Did you report all of the behaviors of the pods, frameworks, SDKs, or libraries you used?</h4> <br> <br>
-
-            <h2>Survey Questions</h2>
-            <h3>Please rate your agreement with the following statements on a scale of 1 to 5, where 1 is strongly disagree and 5 is strongly agree.</h3>
-
-            <h4>Perceived Usefulness:</h4>
-            PFP allows me to construct accurate privacy labels？
-            <form name = "form1_1">
-            <input class = "survey_input" type="radio" value="1p" name = "1_1">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "1_1">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "1_1">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "1_1">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "1_1">5&nbsp
-            </form>
-            PFP saves me time in constructing privacy labels?
-            <form name = "form1_2">
-            <input class = "survey_input" type="radio" value="1p" name = "1_2">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "1_2">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "1_2">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "1_2">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "1_2">5&nbsp
-            </form>
-            PFP help me better understand the privacy related to my work?
-            <form name = "form1_3">
-            <input class = "survey_input" type="radio" value="1p" name = "1_3">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "1_3">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "1_3">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "1_3">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "1_3">5&nbsp
-            </form>
-
-            Using PFP would increase the efficiency of my work?
-            <form name = "form1_4">
-            <input class = "survey_input" type="radio" value="1p" name = "1_4">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "1_4">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "1_4">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "1_4">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "1_4">5&nbsp
-            </form>
-
-            <h4>Perceived Ease of Use:</h4>
-            My interaction with PFP is clear and understandable?
-            <form name = "form2_1">
-            <input class = "survey_input" type="radio" value="1p" name = "2_1">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "2_1">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "2_1">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "2_1">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "2_1">5&nbsp
-            </form>
-
-            I find it easy to get PFP to do what I want it to do?
-            <form name = "form2_2">
-            <input class = "survey_input" type="radio" value="1p" name = "2_2">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "2_2">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "2_2">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "2_2">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "2_2">5&nbsp
-            </form>
-
-            Learning to operate PFP is easy for me?
-            <form name = "form2_3">
-            <input class = "survey_input" type="radio" value="1p" name = "2_3">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "2_3">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "2_3">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "2_3">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "2_3">5&nbsp
-            </form>
-
-            I find PFP easy to use?
-            <form name = "form2_4">
-            <input class = "survey_input" type="radio" value="1p" name = "2_4">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "2_4">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "2_4">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "2_4">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "2_4">5&nbsp
-            </form>
-
-            <h4>Attitudes towards PFP use:</h4>
-            PFP makes my work more interesting?
-            <form name = "form3_1">
-            <input class = "survey_input" type="radio" value="1p" name = "3_1">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "3_1">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "3_1">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "3_1">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "3_1">5&nbsp
-            </form>
-
-            PFP makes me more willing to understand the privacy regulations?
-            <form name = "form3_2">
-            <input class = "survey_input" type="radio" value="1p" name = "3_2">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "3_2">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "3_2">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "3_2">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "3_2">5&nbsp
-            </form>
-
-            <h4>Intention to use:</h4>
-            I will use PFP in my work in the future?
-            <form name = "form4_1">
-            <input class = "survey_input" type="radio" value="1p" name = "4_1">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "4_1">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "4_1">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "4_1">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "4_1">5&nbsp
-            </form>
-
-            I plan to use PFP often?
-            <form name = "form4_2">
-            <input class = "survey_input" type="radio" value="1p" name = "4_2">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "4_2">2&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "4_2">3&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "4_2">4&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "4_2">5&nbsp
-            </form>
-            <br>
-            <br>
-            <h3>Demographic Questions</h3>
-            How many apps have you published?
-            <form name = "form5_1">
-            <input class = "survey_input" type="radio" value="1p" name = "5_1">1&nbsp
-            <input class = "survey_input" type="radio" value="2p" name = "5_1">2-3&nbsp
-            <input class = "survey_input" type="radio" value="3p" name = "5_1">4-5&nbsp
-            <input class = "survey_input" type="radio" value="4p" name = "5_1">6-7&nbsp
-            <input class = "survey_input" type="radio" value="5p" name = "5_1">8+&nbsp
-            </form>
-
-            Have you filled out a nutrition label before?
-            <form name = "form5_2">
-                <input class = "survey_input" type ="radio" value = "1p" name = "5_2">yes&nbsp
-                <input class = "survey_input" type ="radio" value = "2p" name = "5_2" >no&nbsp
-            </form>
-
-             Do you work full time as a developer?
-            <form name = "form5_3">
-                <input class = "survey_input" type ="radio" value = "1p" name = "5_3">yes&nbsp
-                <input class = "survey_input" type ="radio" value = "2p" name = "5_3" >no&nbsp
-            </form>
-            <br>
-            <br>
-
-            <h4>Paste the url of your app on the Apple App Store here:</h4>
-            <input value = "Paste your url here" class = "url" id="url">
-
-            <button type="button"
-                  style="margin: 5px"
-                  class="btn btn-info btn-sm"
-                  id='mod-0w-next'>
-              <span style="font-weight: bold;">Submit</span>
-              <img
-              src="img/checkmark-circle.svg"
-              height="15px"
-              width="15px"/>
-          </button>
-
-
-        </div>
-
-
-      <!--<div id="mod-0p">
-        <h1>
-          Privacy Policy for the<br><span class="app-name"></span> App
-        </h1>
-        <br>
-        <p>
-          <strong>Last updated:</strong> <span id="mod-0p-date"></span>
-          <br>
-          <span id="mod-0p-url"></span>
-        </p>
-        <p>
-          We are the developers of <span class="app-name"></span>. This privacy policy describes how we process your personal information and which privacy rights you have when you are using <span class="app-name"></span>. Please contact us at the contact information <a href="#contact_us">below</a> if you have any questions or comments.
-        </p>
-        <p>
-          <ol id="links">
-            <li><a href="#personal_information_collection">Personal Information Collection and Use</a></li>
-            <li><a href="#personal_information_sharing">Personal Information Sharing</a></li>
-            <li><a href="#social_login">Social Logins</a></li>
-            <li><a href="#in-app_purchase">In-app Purchase Information</a></li>
-            <li id="mod-5p-link"><a href="#california_privacy_rights">Privacy Rights of California Residents</a></li>
-            <li id="mod-6p-link"><a href="#eea_privacy_rights">Privacy Rights of Users in the European Economic Area</a></li>
-            <li><a href="#children_personal_information">Children's Personal Information</a></li>
-            <li><a href="#personal_information_retention">How Long We Keep Your Personal Information</a></li>
-            <li><a href="#personal_information_protection">How We Protect Your Personal Information</a></li>
-            <li><a href="#policy_changes">Policy Changes</a></li>
-            <li><a href="#accessibility">Accessibility</a></li>
-            <li><a href="#contact_us">Contact Us</a></li>
-          </ol>
-        </p>
-      </div>
-
-      <br>-->
-
-      <!-- Section-1P -->
-      <!--<div id="mod-1p">
-        <h2 id="personal_information_collection">
-          <span class="num">1</span>. Personal Information Collection and Use
-        </h2>
-        <div id="mod-1p-practices"></div>
-        <div id="mod-1p-practices-alt"></div>
-      </div>-->
-
-      <!-- Section-2P -->
-      <!--<div id="sec-title-2P">
-        <br>
-        <h2 id="personal_information_sharing">
-          <span class="num">2</span>. Personal Information Sharing
-        </h2>
-        <div id="mod-2p-practices"></div>
-        <div id="mod-2p-practices-alt"></div>
-      </div>-->
-
-      <!-- Section-3P -->
-      <!--<div id="sec-title-3P">
-        <br>
-        <h2 id="social_login">
-          <span class="num">3</span>. Social Logins
-        </h2>
-        <div id="mod-3p-content"></div>
-      </div>-->
-
-      <!-- Section-4P -->
-      <!--<div id="sec-title-4P">
-        <br>
-        <h2 id="in-app_purchase">
-            <span class="num">4</span>. In-app Purchase Information
-        </h2>
-        <div id="mod-4p-content"></div>
-      </div>-->
-
-      <!-- Section-5P -->
-      <!--<div class="exclude" id="sec-title-5P">
-        <br>
-        <h2 id="california_privacy_rights">
-            <span class="num">5</span>. Privacy Rights of California Residents
-        </h2>
-        <div id="mod-5p-content">
-          <div class="alert alert-info" role="alert">
-            Based on your selection, this Section will be omitted in the exported privacy policy.
-          </div>
-        </div>
-      </div>-->
-
-      <!-- Section-6P -->
-      <!--<div class="exclude" id="sec-title-6P">
-        <br>
-        <h2 id="eea_privacy_rights">
-            <span class="num">6</span>. Privacy Rights of Users in the European Economic Area
-        </h2>
-        <div id="mod-6p-content">
-          <div class="alert alert-info" role="alert">
-              Based on your selection, this Section will be omitted in the exported privacy policy.
-          </div>
-        </div>
-      </div>-->
-
-      <!-- Section-7P -->
-      <!--<div id="sec-title-7P">
-        <br>
-        <h2 id="children_personal_information">
-          <span class="num">7</span>. Children's Personal Information
-        </h2>
-        <div id="mod-7p-content">
-        </div>
-      </div>-->
-
-      <!-- Section-8P -->
-      <!--<div id="mod-8p-title">
-        <br>
-        <h2 id="personal_information_retention">
-          <span class="num">8</span>. How Long We Keep Your Personal Information
-        </h2>
-        <div id="mod-8p-content">-->
-          <!-- Content Inflated Here -->
-        <!--</div>
-      </div>-->
-
-      <!-- Section-9P -->
-      <!--<div id="sec-title-9P">
-        <br>
-        <h2 id="personal_information_protection">
-          <span class="num">9</span>. How We Protect Your Personal Information
-        </h2>
-        <div id="mod-9p-content"> -->
-          <!-- Content Inflated Here -->
-        <!--</div>
-      </div>-->
-
-      <!-- Section-10P -->
-      <!--<div id="sec-title-10P">
-        <br>
-        <h2 id="policy_changes">
-          <span class="num">10</span>. Policy Changes
-        </h2>
-        <div id="mod-10p-content">-->
-          <!-- Content Inflated Here -->
-        <!--</div>
-      </div>-->
-
-      <!-- Section-11P -->
-      <!-- <div id="sec-title-11P">
-        <br>
-        <h2 id="accessibility">
-          <span class="num">11</span>. Accessibility
-        </h2>
-        <div id="mod-11p-content">-->
-          <!-- Content Inflated Here -->
-        <!--</div>
-      </div>-->
-
-      <!-- Section-12P -->
-      <!--<div id="sec-title-12P" class="extra-margin-bottom">
-        <br>
-        <h2 id="contact_us">
-          <span class="num">12</span>. Contact Us
-        </h2>
-        <p>Please contact us if you have any questions or concerns.</p>
-        <div id="mod-12p-name"></div>
-        <div id="mod-12p-email"></div>
-      </div>-->
-
-
-        <!-- Section User -->
-        <!--<div id="sec-title-Instructions" class="extra-margin-bottom">
-        <br>
-        <h2 id="contact_us">
-          <span class="num">1</span>. Apple's Interface
-        </h2>
-        <p>Please contact us if you have any questions or concerns.</p>
-      </div>-->
 
     </section>
 
