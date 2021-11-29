@@ -9,7 +9,7 @@ mod2.js adds and controls functionality of third party permissions in the
 
 import { sdkPractices, sdks, practices } from './../wizard.js'
 import {
-  scrollHorizontalEnd, decodePermission, updateAppName, permissions, smoothScroll, mapPermissionToApple
+  scrollHorizontalEnd, decodePermission, updateAppName, permissions, smoothScroll, mapPermissionToApple, uncategorizedApple
 } from './../utilities.js'
 import { syncMod5Alt } from './mod5.js'
 import { syncMod7 } from './mod7.js'
@@ -32,10 +32,10 @@ function setDefaults() {
         <div>
           <h3 style="margin: 0%;"> Add Third Party</h3>
         </div>
-        <button 
-          type="button" 
+        <button
+          type="button"
           class="btn close ml-auto"
-          data-toggle="collapse" 
+          data-toggle="collapse"
           data-target="#mod-2w-collapse-sdks"
           >
           <div class="close-char">
@@ -45,18 +45,18 @@ function setDefaults() {
       </div>
       <div class="d-flex flex-column mt-1">
         <div class="mt-2"><small>Third Party</small></div>
-        <input 
+        <input
           class="font-weight-bold"
-          type="text" 
-          placeholder="Enter third party (Ex. AdMob)" 
+          type="text"
+          placeholder="Enter third party (Ex. AdMob)"
           id="mod-2w-collapse-sdks-input">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="badge badge-dark badge-pill mt-3 align-self-start"
           id="mod-2w-collapse-sdks-add">
           Add
         </a>
-      </div>     
+      </div>
     `
     $('#mod-2w-collapse-sdks-data').html(html)
     $('#mod-2w-collapse-sdks-add').off().click(function(){
@@ -77,7 +77,7 @@ function setDefaults() {
       } else {
         $('#mod-2w-collapse-sdks-input').attr('placeholder', 'This field is required.')
       }
-    })    
+    })
     $('#mod-2w-collapse-sdks').collapse('show')
   })
 }
@@ -93,7 +93,7 @@ function inflateThirdPartyButtons() {
     if (sdks[key]["USED"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-tp text-nowrap font-weight-bold tp"
         id="` + key +`tpbtn">
         <img
@@ -107,7 +107,7 @@ function inflateThirdPartyButtons() {
     } else if (sdks[key]["USED"] != null) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm text-nowrap btn-outline-secondary-alt tp"
         id="` + key +`tpbtn">
         <img
@@ -168,17 +168,17 @@ function inflateSDKCollapseMain(sdkTechName) {
         <h3 class="m-0">` + sdks[sdkTechName]["NAME"] + `</h3>
       </div>
       <div class="ml-2 align-self-center">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="badge badge-dark badge-pill"
           id="mod-2w-collpase-sdks-edit">
           `+text+`
         </a>
       </div>
-      <button 
-        type="button" 
+      <button
+        type="button"
         class="btn close ml-auto pl-2"
-        data-toggle="collapse" 
+        data-toggle="collapse"
         data-target="#mod-2w-collapse-sdks"
         id="mod-2w-close"
         >
@@ -191,14 +191,14 @@ function inflateSDKCollapseMain(sdkTechName) {
       <h3 class="m-0 mb-2">Code Usage</h3>
       <div class="d-flex flex-column ml-4 mb-4">
         <div class="d-flex flex-row align-items-center">
-        <img 
-        src="img/folder-outline.svg" 
-        height="18px" 
-        width="18px" 
+        <img
+        src="img/folder-outline.svg"
+        height="18px"
+        width="18px"
         class="ml-n4"/>
         <strong>&nbsp;Directory</strong>
         </div>
-      <div style="word-wrap: break-word;">`+ sdks[sdkTechName]["EVIDENCE"] +`</div>       
+      <div style="word-wrap: break-word;">`+ sdks[sdkTechName]["EVIDENCE"] +`</div>
     </div>
       <div class="mod-2w">
       <div class="d-flex flex-row justify-content-between mb-2">
@@ -219,8 +219,8 @@ function inflateSDKCollapseMain(sdkTechName) {
       </div>
       </div>
       <div class="collapse shadow-sm mt-2 mod-2w" id="mod-2w-collapse-sdk-p"></div>
-    </div>     
-  ` 
+    </div>
+  `
   $('#mod-2w-collapse-sdks-data').html(html)
   if (!sdks[sdkTechName]["USED"]) {
     $('.mod-2w').hide()
@@ -267,17 +267,17 @@ function inflateSDKCollapseAlt(sdkTechName) {
         <h3 class="m-0">` + sdks[sdkTechName]["NAME"] + `</h3>
       </div>
       <div class="ml-2 align-self-center">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="badge badge-danger badge-pill"
           id="mod-2w-collpase-sdks-edit">
           Delete
         </a>
       </div>
-      <button 
-        type="button" 
+      <button
+        type="button"
         class="btn close ml-auto pl-2"
-        data-toggle="collapse" 
+        data-toggle="collapse"
         data-target="#mod-2w-collapse-sdks"
         id="mod-2w-close"
         >
@@ -302,8 +302,8 @@ function inflateSDKCollapseAlt(sdkTechName) {
         id="mod-2w-sdk-permissions">
       </div>
       <div class="collapse shadow-sm mt-2" id="mod-2w-collapse-sdk-p"></div>
-    </div>     
-  ` 
+    </div>
+  `
   $('#mod-2w-collapse-sdks-data').html(html)
   inflateSDKPermissions(sdkTechName)
   $('#'+ 'mod-2w-close').off().click(function (){
@@ -332,7 +332,7 @@ function inflateSDKPermissions(sdkTechName) {
          sdkPractices[category][sdkTechName]["USED"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-info-alt text-nowrap font-weight-bold tp1"
         id="` + category +`tp1btn">
         <img
@@ -346,7 +346,7 @@ function inflateSDKPermissions(sdkTechName) {
     } else {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm text-nowrap btn-outline-secondary-alt tp1"
         id="` + category +`tp1btn">
         <img
@@ -364,7 +364,7 @@ function inflateSDKPermissions(sdkTechName) {
         additionalPermissions[category]['SDKS'][sdkTechName]["USED"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-info-alt text-nowrap font-weight-bold tp1"
         id="` + category +`tp1btn">
         <img
@@ -378,7 +378,7 @@ function inflateSDKPermissions(sdkTechName) {
     } else {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm text-nowrap btn-outline-secondary-alt tp1"
         id="` + category +`tp1btn">
         <img
@@ -403,7 +403,7 @@ function inflateSDKPermissions(sdkTechName) {
 
       if (permissions.includes(category)) {
         if (!(sdkTechName in sdkPractices[category])) {
-          sdkPractices[category][sdkTechName] = 
+          sdkPractices[category][sdkTechName] =
           {"USED" : false, "PURPOSE": sdks[sdkTechName]["PURPOSE"]}
         }
         let text = "Add"
@@ -417,14 +417,14 @@ function inflateSDKPermissions(sdkTechName) {
             temp += `
               <div class="d-flex flex-column>
                 <div class="d-flex flex-row align-items-center">
-                  <img 
-                    src="img/file-outline.svg" 
-                    height="18px" 
-                    width="18px" 
+                  <img
+                    src="img/file-outline.svg"
+                    height="18px"
+                    width="18px"
                     class="ml-n4"/>
                   <strong>&nbsp;File</strong>
                 </div>
-                <div style="word-wrap: break-word;">`+ value.file_name +`</div>        
+                <div style="word-wrap: break-word;">`+ value.file_name +`</div>
               </div>
               `
             return false
@@ -446,8 +446,8 @@ function inflateSDKPermissions(sdkTechName) {
               ` + decodePermission(category) + `</h3>
             </div>
             <div class="ml-2 align-self-center">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 class="badge badge-dark badge-pill"
                 id="mod-2w-sdk-permission-edit">
                 ` + text +`
@@ -456,21 +456,21 @@ function inflateSDKPermissions(sdkTechName) {
           </div>
           <div class="d-flex flex-column mt-1">
             <div><small>Purpose</small></div>
-            <input 
+            <input
               class="font-weight-bold"
-              type="text" 
+              type="text"
               value="`+sdkPractices[category][sdkTechName]["PURPOSE"]+`"
-              placeholder="We use this permission to..." 
+              placeholder="We use this permission to..."
               id="mod-2w-purpose">
               `
               + plistUsages +
               `
-          </div>  
+          </div>
         </div>
         `
         $('#mod-2w-collapse-sdk-p').html(html).collapse('show')
         $('#mod-2w-sdk-permission-edit').off().click(function(){
-          sdkPractices[category][sdkTechName]["USED"] = 
+          sdkPractices[category][sdkTechName]["USED"] =
             !sdkPractices[category][sdkTechName]["USED"]
           if (sdkPractices[category][sdkTechName]["USED"]) {
               $('#' + category + 'tp1btn')
@@ -499,7 +499,7 @@ function inflateSDKPermissions(sdkTechName) {
       })
   } else {
     if (!(sdkTechName in additionalPermissions[category]["SDKS"])) {
-      additionalPermissions[category]["SDKS"][sdkTechName] = 
+      additionalPermissions[category]["SDKS"][sdkTechName] =
       {"USED" : false, "PURPOSE": sdks[sdkTechName]["PURPOSE"]}
     }
     let text = "Add"
@@ -514,8 +514,8 @@ function inflateSDKPermissions(sdkTechName) {
           ` + additionalPermissions[category]['NAME'] + `</h3>
         </div>
         <div class="ml-2 align-self-center">
-          <a 
-            href="#" 
+          <a
+            href="#"
             class="badge badge-dark badge-pill"
             id="mod-2w-sdk-permission-edit">
             ` + text +`
@@ -524,19 +524,19 @@ function inflateSDKPermissions(sdkTechName) {
       </div>
       <div class="d-flex flex-column mt-1">
         <div><small>Purpose</small></div>
-        <input 
+        <input
           class="font-weight-bold"
-          type="text" 
+          type="text"
           value="`
           +additionalPermissions[category]["SDKS"][sdkTechName]["PURPOSE"]+`"
-          placeholder="We use this permission to..." 
+          placeholder="We use this permission to..."
           id="mod-2w-purpose">
-      </div>  
+      </div>
     </div>
     `
     $('#mod-2w-collapse-sdk-p').html(html).collapse('show')
     $('#mod-2w-sdk-permission-edit').off().click(function(){
-      additionalPermissions[category]['SDKS'][sdkTechName]["USED"] = 
+      additionalPermissions[category]['SDKS'][sdkTechName]["USED"] =
         !additionalPermissions[category]['SDKS'][sdkTechName]["USED"]
       if (additionalPermissions[category]['SDKS'][sdkTechName]["USED"]) {
           $('#' + category + 'tp1btn')
@@ -578,31 +578,31 @@ function inflateSDKPermissions(sdkTechName) {
         <div class="d-flex flex-column mt-1">
           <div class="mt-2"><small>Category</small></div>
             <input
-              class="font-weight-bold" 
-              type="text" 
-              placeholder="Enter category (Ex. E-mail address)" 
+              class="font-weight-bold"
+              type="text"
+              placeholder="Enter category (Ex. E-mail address)"
               id="mod-2w-additions-input-name">
           <div class="mt-2"><small>Purpose</small></div>
           <input
-            class="font-weight-bold" 
+            class="font-weight-bold"
             type="text"
             value="`+sdks[sdkTechName]["PURPOSE"]+`"
-            placeholder="Enter purpose (Ex. Marketing)" 
+            placeholder="Enter purpose (Ex. Marketing)"
             id="mod-2w-additions-purpose">
           <div class="d-flex flex-row justify-content-start mt-3">
-            <a 
-              href="#" 
+            <a
+              href="#"
               class="badge badge-dark badge-pill align-self-center"
               id="mod-2w-additions-add-1">
               Add
             </a>
           </div>
-        </div>    
+        </div>
       </div>
     `
     $('#mod-2w-collapse-sdk-p').html(html)
     $('#mod-2w-additions-add-1').off().click(function(){
-      if ($('#mod-2w-additions-input-name').val() in additionalPermissions || 
+      if ($('#mod-2w-additions-input-name').val() in additionalPermissions ||
         $('#mod-2w-additions-input-name').val() == "" || $('#mod-2w-additions-purpose').val() == "") {
           $('#mod-2w-additions-input-name').attr('placeholder', 'This field is required.')
           $('#mod-2w-additions-purpose').attr('placeholder', 'This field is required.')
@@ -613,7 +613,7 @@ function inflateSDKPermissions(sdkTechName) {
         let permissionTechName = Object.keys(additionalPermissions).length
         additionalPermissions[permissionTechName] =
           {"NAME": $('#mod-2w-additions-input-name').val(), "SDKS": {} }
-        additionalPermissions[permissionTechName]["SDKS"][sdkTechName] = 
+        additionalPermissions[permissionTechName]["SDKS"][sdkTechName] =
           {'USED': true, 'PURPOSE': $('#mod-2w-additions-purpose').val()}
         inflatePermissionButtons()
         inflateSDKPermissions(sdkTechName)
@@ -647,7 +647,7 @@ function inflatePermissionButtons(){
     if (value) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-info-alt font-weight-bold tp0"
         id="` + permission +`tp0btn">
         <img
@@ -661,7 +661,7 @@ function inflatePermissionButtons(){
     } else {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-secondary-alt tp0"
         id="` + permission +`tp0btn">
         <img
@@ -686,7 +686,7 @@ function inflatePermissionButtons(){
     if (value) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-info-alt font-weight-bold tp0"
         id="` + permission +`tp0btn">
         <img
@@ -700,7 +700,7 @@ function inflatePermissionButtons(){
     } else {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-secondary-alt tp0"
         id="` + permission +`tp0btn">
         <img
@@ -746,14 +746,14 @@ function inflateCollapseMain(permission) {
       temp += `
         <div class="d-flex flex-column mb-4">
           <div class="d-flex flex-row align-items-center">
-            <img 
-              src="img/file-outline.svg" 
-              height="18px" 
-              width="18px" 
+            <img
+              src="img/file-outline.svg"
+              height="18px"
+              width="18px"
               class="ml-n4"/>
             <strong>&nbsp;File</strong>
           </div>
-          <div style="word-wrap: break-word;">`+ value.file_name +`</div>        
+          <div style="word-wrap: break-word;">`+ value.file_name +`</div>
         </div>
         `
       return false
@@ -772,10 +772,10 @@ function inflateCollapseMain(permission) {
     <div>
       <h3 class="m-0">` + decodePermission(permission) + `</h3>
     </div>
-    <button 
-      type="button" 
+    <button
+      type="button"
       class="btn close ml-auto pl-2"
-      data-toggle="collapse" 
+      data-toggle="collapse"
       data-target="#mod-2w-collapse"
       id="mod-2w-close-1"
       >
@@ -793,7 +793,7 @@ function inflateCollapseMain(permission) {
       class="d-flex flex-row flex-nowrap overflow-auto align-items-center"
       id="mod-2w-sdk-usage">
     </div>
-  </div> 
+  </div>
   `
   $('#mod-2w-collapse-data').html(html)
   smoothScroll()
@@ -802,7 +802,7 @@ function inflateCollapseMain(permission) {
     if (sdks[key]["USED"] && sdkPractices[permission][key]["USED"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-tp text-nowrap font-weight-bold tp3"
         id="` + key +`tp3btn">
         <img
@@ -864,17 +864,17 @@ function inflateCollapseAlt(permission) {
       <h3 class="m-0">` + additionalPermissions[permission]["NAME"] + `</h3>
     </div>
     <div class="ml-2 align-self-center">
-    <a 
-      href="#" 
+    <a
+      href="#"
       class="badge badge-danger badge-pill"
       id="mod-2w-collpase-sdks-edit-1">
       Delete
     </a>
     </div>
-    <button 
-      type="button" 
+    <button
+      type="button"
       class="btn close ml-auto pl-2"
-      data-toggle="collapse" 
+      data-toggle="collapse"
       data-target="#mod-2w-collapse"
       id="mod-2w-close-1"
       >
@@ -891,7 +891,7 @@ function inflateCollapseAlt(permission) {
       class="d-flex flex-row flex-nowrap overflow-auto align-items-center"
       id="mod-2w-sdk-usage">
     </div>
-  </div> 
+  </div>
   `
   $('#mod-2w-collapse-data').html(html)
   smoothScroll()
@@ -906,7 +906,7 @@ function inflateCollapseAlt(permission) {
     if (sdks[key]["USED"] && additionalPermissions[permission]["SDKS"][key]["USED"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-tp text-nowrap font-weight-bold tp3"
         id="` + key +`tp3btn">
         <img
@@ -987,7 +987,7 @@ function updatePolicy(){
         <ul>`+ tempHtml +`</ul
       </li>
       <br>`
-    } 
+    }
   })
   $.each(additionalPermissions, function(permission, val0){
     let tempHtml = ""
@@ -1013,7 +1013,7 @@ function updatePolicy(){
         <ul>`+ tempHtml +`</ul
       </li>
       <br>`
-    } 
+    }
   })
   $.each(sdks, function(key, value){
     if (sdks[key]["USED"] && !(temp.has(key))) {
@@ -1038,7 +1038,7 @@ function updatePolicy(){
     <span class="app-name"></span> integrates the following third party services that are not requesting any permission:
     </p>
     ` + `<ul>` + html1 + `</ul>
-  
+
     `
   }
   if (html1 != "" || html0 != "") {
@@ -1104,6 +1104,12 @@ export function mod2() {
           detected+"</td><td>"+evi+"</td><td>"+purpose+
         "</td></tr>")
   })
+
+// 22 apple data types are not categorized by PFP
+  for (let i = 0; i < 22; i++){
+    $('#output-sdk-practice').append("<tr class='active-row'><td>NOT CATEGORIZED</td><td>"+uncategorizedApple[i]+"</td><td></td><td></td><td>"+" "+
+        "</td></tr>")
+  }
 
   inflatePermissionButtons()
   inflateThirdPartyButtons()

@@ -28,11 +28,17 @@ export function mapPermissionToApple(permission){
     return permission
   }
 }
- 
+
+export const uncategorizedApple = ["Name", "Email Address", "Phone Number", "Physical Address",
+"Emails or Text Messages", "Browsing History", "Search History", "User ID", "Purchase History",
+"Product Interaction", "Other Usage Data", "Crash Data", "Performance Data", "Other Diagnostic Data",
+"Other User Contact Info", "Gameplay Content", "Customer Support", "Other User Content", "Payment Info",
+"Credit Info", "Other Financial Info", "Sensitive Info"]
+
 /**
 * @desc get proper name of permission from technical name
-* @params (permission : string) - 
-* @return string - proper name of permission 
+* @params (permission : string) -
+* @return string - proper name of permission
 */
 export function decodePermission(permission){
   const names = {"LOCATION": "Location Services", "CAMERA": "Camera",
@@ -97,7 +103,7 @@ export function injectPermissionButtons(id, party) {
   $.each(permissions, function(index, value) {
     html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-secondary-alt `+party+`"
         id="` + value + party + `btn">
         <img
@@ -144,7 +150,7 @@ export function autoSizeTextArea(){
     },0);
   }
   document.getElementById('main').querySelectorAll('textarea').forEach(textarea => {
-    textarea.addEventListener('keydown', autosize);   
+    textarea.addEventListener('keydown', autosize);
   });
 };
 
