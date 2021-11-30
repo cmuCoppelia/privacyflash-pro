@@ -7,7 +7,7 @@ mod1.js adds and controls functionality of first party permissions in the
 */
 
 import { practices } from './../wizard.js'
-import {updateAppName, permissions, decodePermission, mapPermissionToApple} from './../utilities.js'
+import {updateAppName, permissions, decodePermission, mapPermissionToApple, uncategorizedApple} from './../utilities.js'
 
 var userData = {} // Storage for additional practices
 
@@ -23,10 +23,10 @@ function setDefaults() {
         <div>
           <h3 style="margin: 0%;">Add Category</h3>
         </div>
-        <button 
-        type="button" 
+        <button
+        type="button"
         class="btn close pl-2 ml-auto"
-        data-toggle="collapse" 
+        data-toggle="collapse"
         data-target="#mod-1w-collapse"
         id="mod-1w-additions-close"
         >
@@ -38,25 +38,25 @@ function setDefaults() {
       <div class="d-flex flex-column mt-1">
         <div class="mt-2"><small>Category</small></div>
           <input
-            class="font-weight-bold" 
-            type="text" 
-            placeholder="Enter category (Ex. E-mail address)" 
+            class="font-weight-bold"
+            type="text"
+            placeholder="Enter category (Ex. E-mail address)"
             id="mod-1w-additions-input-name">
         <div class="mt-2"><small>Purpose</small></div>
-          <input 
+          <input
             class="font-weight-bold"
-            type="text" 
-            placeholder="Enter purpose (Ex. Marketing)" 
+            type="text"
+            placeholder="Enter purpose (Ex. Marketing)"
             id="mod-1w-additions-input-purpose">
         <div class="d-flex flex-row justify-content-start mt-3">
-          <a 
-            href="#" 
+          <a
+            href="#"
             class="badge badge-dark badge-pill align-self-center"
             id="mod-1w-additions-add">
             Add
           </a>
         </div>
-      </div>    
+      </div>
   `
   $('#mod-1w-evidence').html(html)
   $('#mod-1w-additions-close').off()
@@ -98,7 +98,7 @@ function inflatePermissionButtons () {
     if (practices[value]["used"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-info-alt font-weight-bold fp"
         id="` + value +`fpbtn">
         <img
@@ -112,7 +112,7 @@ function inflatePermissionButtons () {
     } else {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-secondary-alt fp"
         id="` + value +`fpbtn">
         <img
@@ -129,7 +129,7 @@ function inflatePermissionButtons () {
     if (userData[category]["USED"]) {
       html += `
       <button
-        type="button" 
+        type="button"
         class="btn btn-sm btn-outline-info-alt font-weight-bold fp"
         id="` + category +`fpbtn">
         <img
@@ -176,14 +176,14 @@ function inflateCollapseMain(p) {
     plistUsages += `
       <div class="d-flex flex-column mb-4">
         <div class="d-flex flex-row align-items-center">
-          <img 
-            src="img/file-outline.svg" 
-            height="18px" 
-            width="18px" 
+          <img
+            src="img/file-outline.svg"
+            height="18px"
+            width="18px"
             class="ml-n4"/>
           <strong>&nbsp;File</strong>
         </div>
-        <div style="word-wrap: break-word;">`+ value.file_name +`</div>       
+        <div style="word-wrap: break-word;">`+ value.file_name +`</div>
       </div>
       `
     return false
@@ -217,10 +217,10 @@ function inflateCollapseMain(p) {
       firstPartyUsages +=`
         <div class="d-flex flex-column">
           <div class="d-flex flex-row align-items-center">
-            <img 
-              src="img/file-outline.svg" 
-              height="18px" 
-              width="18px" 
+            <img
+              src="img/file-outline.svg"
+              height="18px"
+              width="18px"
               class="ml-n4"/>
             <strong>&nbsp;File</strong> `+ rank +`
           </div>
@@ -232,24 +232,24 @@ function inflateCollapseMain(p) {
       additionalUsages +=`
         <div class="d-flex flex-column">
           <div class="d-flex flex-row align-items-center">
-            <img 
-              src="img/file-outline.svg" 
-              height="18px" 
-              width="18px" 
+            <img
+              src="img/file-outline.svg"
+              height="18px"
+              width="18px"
               class="ml-n4"/>
             <strong>&nbsp;File</strong> `+ rank +`
           </div>
-          <div style="word-wrap: break-word;">`+ value.file_name +`</div>     
+          <div style="word-wrap: break-word;">`+ value.file_name +`</div>
         </div><br>`
     }
   })
   if (additionalUsages != "") {
     $("#mod-1w-usages").html(additionalUsages.slice(0, -4))
     additionalUsages = `
-      <a 
-        href="#" 
-        class="badge badge-light badge-pill mt-4" 
-        data-toggle="modal" 
+      <a
+        href="#"
+        class="badge badge-light badge-pill mt-4"
+        data-toggle="modal"
         data-target="#mod-1w-modal">
         More Code Usages
       </a>
@@ -264,17 +264,17 @@ function inflateCollapseMain(p) {
       <h3 style="margin: 0%;">` + decodePermission(p) + `</h3>
     </div>
     <div class="ml-2 align-self-center">
-      <a 
-        href="#" 
+      <a
+        href="#"
         class="badge badge-dark badge-pill"
         id="mod-1w-permission">
         Remove
       </a>
     </div>
-  <button 
-    type="button" 
+  <button
+    type="button"
     class="btn close ml-auto"
-    data-toggle="collapse" 
+    data-toggle="collapse"
     data-target="#mod-1w-collapse"
     id="mod-1w-close"
     >
@@ -285,11 +285,11 @@ function inflateCollapseMain(p) {
   </div>
   <div class="d-flex flex-column mt-1">
     <div><small>Purpose</small></div>
-    <input 
+    <input
       class="font-weight-bold"
       type="text"
       value="`+description+`"
-      placeholder="We use this permission to..." 
+      placeholder="We use this permission to..."
       id="mod-1w-purpose">
   </div>
   <div class="d-flex flex-column">
@@ -329,7 +329,7 @@ function inflateCollapseMain(p) {
     <div class="d-flex flex-row justify-content-between align-items-center">
       `+ additionalUsages +`
     </div>
-  </div>          
+  </div>
   `
 
   $('#mod-1w-evidence').html(html)
@@ -384,18 +384,18 @@ function inflateCollapseAlt(p){
         <h3 class="m-0 text-wrap text-break">` + p + `</h3>
       </div>
       <div class="ml-2 align-self-center">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="badge badge-danger badge-pill"
           id="mod-1w-alt-permission">
           Delete
         </a>
       </div>
       <div class="ml-auto pl-2 align-self-center">
-        <button 
-          type="button" 
+        <button
+          type="button"
           class="btn close ml-auto"
-          data-toggle="collapse" 
+          data-toggle="collapse"
           data-target="#mod-1w-collapse"
           id="mod-1w-additions-close"
           >
@@ -407,13 +407,13 @@ function inflateCollapseAlt(p){
     </div>
     <div class="d-flex flex-column mt-1">
       <div><small>Purpose</small></div>
-      <input 
+      <input
         class="font-weight-bold"
-        type="text" 
+        type="text"
         value="`+ purpose +`"
-        placeholder="We use this permission to..." 
+        placeholder="We use this permission to..."
         id="mod-1w-additions-purpose">
-    </div>  
+    </div>
   `
   $('#mod-1w-evidence').html(html)
 
@@ -486,9 +486,9 @@ function updatePolicy() {
 }
 
 /**
-* @desc 
-* @params 
-* @return 
+* @desc
+* @params
+* @return
 */
 function updatePolicyAlt(){
   let html =""
@@ -509,7 +509,7 @@ function updatePolicyAlt(){
     html = `
       <p>
         In addition, we are collecting and using the following personal information from you:
-      </p>` + 
+      </p>` +
       `<ul>` + html.slice(0,-4) + `</ul>`
   }
   $('#mod-1p-practices-alt').html(html)
@@ -553,6 +553,12 @@ export function mod1() {
           detected+"</td><td>"+evi+"</td><td>"+" "+
         "</td></tr>")
   })
+
+// 22 apple data types are not categorized by PFP
+  for (let i = 0; i < 22; i++){
+    $('#output_tbody').append("<tr class='active-row'><td>NOT CATEGORIZED</td><td>"+uncategorizedApple[i]+"</td><td></td><td></td><td>"+" "+
+        "</td></tr>")
+  }
 
   /*for(var [key,value] of practices){
     for(var [key2,value2] of value){
